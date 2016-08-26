@@ -66,5 +66,5 @@
         }
     };
 
-    window.Clock = Clock;
+    this.Clock = Clock;
 }).call(this);
