@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>计时器</title>
+</head>
+
+<body>
+    <div id="time">00:00:00:00:00</div>
+    <div id="control">
+        <input id="start" type="button" value="开始" />
+        <input id="pause" type="button" value="暂停" />
+        <input id="goon" type="button" value="继续" />
+        <input id="reset" type="button" value="重置" />
+    </div>
+</body>
+<script type="text/javascript" src="../src/clock.js"></script>
+<script type="text/javascript">
+Number.prototype.formate = function() {
+    return this >= 10 ? this : '0' + this;
+};
+var clock = Clock();
+document.getElementById('start').onclick = function() {
+    clock.start();
+    setInterval(function() {
+        show();
+    }, 1)
+};
+document.getElementById('pause').onclick = function() {
+    clock.pause();;
+    setInterval(function() {
+        show();
+    }, 1)
+};
+document.getElementById('goon').onclick = function() {
+    clock.goon();;
+    setInterval(function() {
+        show();
+    }, 1)
+};
+document.getElementById('reset').onclick = function() {
+    clock.reset();;
+    setInterval(function() {
+        show();
+    }, 1)
+}
+
+function show() {
+    document.getElementById('time').innerHTML = clock.now.day.formate() + ':' + clock.now.hour.formate() + ':' + clock.now.minite.formate() + ':' + clock.now.seconds.formate() + ':' + clock.now.milliseconds.formate();
+}
+</script>
+
+</html>
