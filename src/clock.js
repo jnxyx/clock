@@ -5,19 +5,19 @@
             return new Clock(args);
         }
         if (args) {
+            this.time = args.time ? args.time : 0;
             this.isBack = args.isBack ? args.isBack : false;
             this.end = args.end ? args.end : null;
         }
         this.timer = null;
         this.now = {
             state: 1,
-            time: 0,
+            time: this.time || 0,
             day: 0,
             hour: 0,
             minite: 0,
             seconds: 0,
-            milliseconds: 0,
-
+            milliseconds: 0
         };
         return this;
     }
