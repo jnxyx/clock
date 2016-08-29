@@ -31,7 +31,7 @@
                     if (self.now.time < 0) {
                         self.now.time = 0;
                         clearInterval(self.timer);
-                        if (self.end) {
+                        if (self.end && 'function' == typeof self.end) {
                             self.end();
                         }
                     }
