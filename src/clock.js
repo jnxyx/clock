@@ -6,7 +6,7 @@
         }
         if (args) {
             this.isBack = args.isBack ? args.isBack : false;
-            this.callback = args.callback ? args.callback : null;
+            this.end = args.end ? args.end : null;
         }
         this.timer = null;
         this.now = {
@@ -31,8 +31,8 @@
                     if (self.now.time < 0) {
                         self.now.time = 0;
                         clearInterval(self.timer);
-                        if (self.callback) {
-                            self.callback();
+                        if (self.end) {
+                            self.end();
                         }
                     }
                 }
