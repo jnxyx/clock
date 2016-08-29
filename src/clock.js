@@ -1,13 +1,16 @@
 ;
 (function() {
-    function Clock() {
+    function Clock(args) {
         if (!(this instanceof(Clock))) {
-            return new Clock();
+            return new Clock(args);
+        }
+        if (args) {
+            this.isBack = args.isBack ? args.isBack : false;
+            this.callback = args.callback ? args.callback : null;
         }
         this.timer = null;
         this.now = {
             state: 1,
-            isBack: false,
             time: 0,
             day: 0,
             hour: 0,
@@ -24,9 +27,13 @@
             var self = this;
             self.timer = setInterval(function() {
                 if (self.now.state) {
-                    self.now.time = self.now.isBack ? (self.now.time - 1) : (self.now.time + 1);
+                    self.now.time = self.isBack ? (self.now.time - 1) : (self.now.time + 1);
                     if (self.now.time < 0) {
                         self.now.time = 0;
+                        clearInterval(self.timer);
+                        if (self.callback) {
+                            self.callback();
+                        }
                     }
                 }
                 self.setTime();
