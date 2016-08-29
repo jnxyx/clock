@@ -1,2 +1,8 @@
-# clock
-a clock template
+[Input](https://github.com/jnxyx/clock) — Plugin about clock
+==================================================
+
+
+说明
+-----------------------------------
+
+这是一款简单的计时器插件。功能可拓展。
