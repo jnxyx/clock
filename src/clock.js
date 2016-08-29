@@ -7,6 +7,7 @@
         this.timer = null;
         this.now = {
             state: 1,
+            isBack: false,
             time: 0,
             day: 0,
             hour: 0,
@@ -23,7 +24,10 @@
             var self = this;
             self.timer = setInterval(function() {
                 if (self.now.state) {
-                    self.now.time++;
+                    self.now.time = self.now.isBack ? (self.now.time - 1) : (self.now.time + 1);
+                    if (self.now.time < 0) {
+                        self.now.time = 0;
+                    }
                 }
                 self.setTime();
             }, 10);
