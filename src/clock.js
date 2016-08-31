@@ -36,7 +36,7 @@
                         }
                     }
                 }
-                self.setTime();
+                self.renderTime();
             }, 10);
         },
 
@@ -62,7 +62,11 @@
             }
         },
 
-        setTime: function() {
+        setTime: function(time) {
+            this.now.time = time;
+        },
+
+        renderTime: function() {
             var self = this;
             var time = self.now.time;
             self.now.milliseconds = time % 1e2;
